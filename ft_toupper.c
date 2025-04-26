@@ -1,0 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maria-j2 <maria-j2@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/23 16:24:16 by maria-j2          #+#    #+#             */
+/*   Updated: 2025/04/26 15:28:33 by maria-j2         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_toupper(int c)
+{
+	if (c > 97 && c < 122)
+	{
+		return (c - 32);
+	}
+	return (c);
+}
+
+/* #include <stdio.h>
+
+int	main(void)
+{
+	printf("PRUEBA ft_toupper\n");
+	
+	int	resul;
+	
+	resul = ft_toupper('c');
+	printf("%d\n", resul);
+	
+	return (0);
+}
+ */
