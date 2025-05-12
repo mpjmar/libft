@@ -3,65 +3,65 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maria-j2 <maria-j2@student.42.fr>          +#+  +:+       +#+         #
+#    By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/26 13:12:25 by maria-j2          #+#    #+#              #
-#    Updated: 2025/04/26 13:14:29 by maria-j2         ###   ########.fr        #
+#    Updated: 2025/05/12 19:39:16 by maria-j2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Nombre del archivo de la biblioteca
+# Name of the library file
 NAME = libft.a 
 
-# Compilador y banderas de compilacion
-CC = gcc -c
+# Compiler and compilation flags
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-# Archivos fuente y archivos objeto
-SRC =  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+# Create library and delete files
+AR = ar rcs 
+RM = rm -f
+
+# Source files and object files
+SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c \
 ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
 ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
-# ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
-ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl.fd.c ft_putnbr_fd.c
+ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
+ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-# BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c #ft_lstlast.c \
 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-OBJS = $(SRC:%.c = %.o)
-BONUS_OBJS = $(SRC:%.c = %.o)
+OBJS = $(SRC:.c=.o)
+BONUS_OBJS = $(SRC:.c = .o)
 
-# Archivo de encabezado
+# Header file
 INCLUDE = libft.h
 
-# Crear bibliotecs y eliminar archivos
-AR = ar rcs
-RM = rm -f
+# Indicates that everything to the right are commands and not files
+.PHONY: all clean fclean re 
 
-# Indica que todo lo que va a la derecha son comandos y no archivos
-.PHONY: all clean fclean re bonus
-
-# Regla por defecto que lo compila todo
-# objetivo : dependencias
-# 	comandos
+# Default rule that compiles everything
+# target : dependencies
+#  commands
 all: $(NAME)
 
-# Regla para crear la biblioteca
+# Rule to create the library
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 bonus: $(OBJS) $(BONUS_OBJS)
 	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
 
-# Pasar archivos .c a .o
+# Compile .c files to .o files
 %.o: %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-# Regla para eliminar todos los archivos objeto creados
+# Rule to delete all created object files
 clean:
-	$(RM) $(OJB) $(BONUS_OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
-# Eliminar todos los archivos .o y .a
+# Delete all .o and .a files
 fclean: clean
 	$(RM) $(NAME)
 

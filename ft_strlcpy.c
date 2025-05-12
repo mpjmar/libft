@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-j2 <maria-j2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 18:56:17 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/04/24 19:02:43 by maria-j2         ###   ########.fr       */
+/*   Updated: 2025/04/30 19:56:32 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,34 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	
+	size_t	src_len;
+
+	src_len = ft_strlen(src);
+	if (size > 0)
+	{
+		while (*src && size > 1)
+		{
+			*dst++ = *src++;
+			size--;
+		}
+		*dst = '\0';
+	}
+	return (src_len);
 }
+
+/* #include <stdio.h>
+
+int	main(void)
+{
+	printf("PRUEBA ft_strlcpy\n");
+	
+	char		dst[5];
+	const char	src[] = "aaa";
+	size_t		resul;
+
+	resul = ft_strlcpy(dst, src, 3);
+
+	printf("%zu\n", resul);
+	
+	return (0);
+}  */

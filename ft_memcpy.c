@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-j2 <maria-j2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:19:15 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/04/26 15:37:32 by maria-j2         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:38:43 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,23 @@
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	const unsigned char	*s;
-	unsigned char	*d;
-	int	i;
+	unsigned char		*d;
 
-	s = src;
-	d = dest;
-	i = 0;
-	while (i < n)
+	s = (const unsigned char *)src;
+	d = (unsigned char *)dest;
+	if (!s && !d)
 	{
-		d[i] = s[i];
-		i++;
+		return (NULL);
 	}
-	
+	while (n > 0)
+	{
+		*d++ = *s++;
+		n--;
+	}
 	return (dest);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 
 int	main(void)
 {
@@ -42,4 +43,4 @@ int	main(void)
 	ft_memcpy(dest, src, 3);
 	printf("%s\n", dest);
 	return (0);
-} 
+}  */

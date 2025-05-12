@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 19:19:47 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/05/11 12:23:29 by maria-j2         ###   ########.fr       */
+/*   Created: 2025/05/09 18:52:55 by maria-j2          #+#    #+#             */
+/*   Updated: 2025/05/12 18:31:45 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	void	*s;
+	char	*s;
+	size_t	i;
 
-	s = malloc(nmemb * size);
-	if (s == NULL)
-		return (NULL);
-	ft_bzero(s, nmemb * size);
-	return (s);
+	if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
+	i = 0;
+	s = ft_itoa(n);
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
+	free(s);
 }
-
-/* #include <stdio.h>
-
-int	main(void)
-{
-	printf("PRUEBA ft_calloc\n")
-
-	char *resul = (char *)ft_calloc(5, 1);
-	printf("%s\n", resul);
-	
-	return (0);
-} */

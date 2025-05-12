@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 19:19:47 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/05/11 12:23:29 by maria-j2         ###   ########.fr       */
+/*   Created: 2025/05/05 19:24:12 by maria-j2          #+#    #+#             */
+/*   Updated: 2025/05/09 17:03:53 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	void	*s;
+	size_t	size;
 
-	s = malloc(nmemb * size);
-	if (s == NULL)
+	if (!s1 || !set)
 		return (NULL);
-	ft_bzero(s, nmemb * size);
-	return (s);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	size = ft_strlen(s1);
+	while (size && ft_strchr(set, s1[size]))
+		size--;
+	return (ft_substr(s1, 0, size + 1));
 }
 
 /* #include <stdio.h>
 
 int	main(void)
 {
-	printf("PRUEBA ft_calloc\n")
+	printf("PRUEBA ft_strtrim\n");
 
-	char *resul = (char *)ft_calloc(5, 1);
-	printf("%s\n", resul);
+	char *resul = ft_strtrim("addbzzdc","adc");
 	
-	return (0);
+	printf("%s\n", resul);
 } */

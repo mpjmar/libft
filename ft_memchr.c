@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-j2 <maria-j2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:36:38 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/04/24 19:12:02 by maria-j2         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:25:53 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,30 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	
+	const unsigned char	*s1;
+	size_t				i;
+
+	s1 = (const unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] == (unsigned char)c)
+			return ((void *)s1 + i);
+		i++;
+	}
+	return (NULL);
 }
+
+/* #include <stdio.h>
+
+int	main(void)
+{
+	printf("PRUEBA ft_memchr\n");
+	
+	unsigned char *ptr;
+	
+	ptr = ft_memchr("Funcion memchr", 'o', 9);
+	printf("%p\n", ptr);
+	
+	return (0);
+} */

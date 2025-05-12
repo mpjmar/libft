@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-j2 <maria-j2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:28:04 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/04/26 16:57:14 by maria-j2         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:15:31 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*d;
+	unsigned char		*d;
 	const unsigned char	*s;
 
-	if ((unsigned char)dest < (const unsigned char)src)
+	if ((unsigned char *)src < (const unsigned char *)dest)
 	{
 		d = (unsigned char *)dest + (n - 1);
 		s = (const unsigned char *)src + (n - 1);
@@ -34,7 +34,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 
 int	main(void)
 {
@@ -47,4 +47,4 @@ int	main(void)
 	printf("%s\n", dest);
 
 	return (0);
-}
+} */

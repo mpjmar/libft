@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maria-j2 <maria-j2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 19:29:25 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/04/26 15:27:34 by maria-j2         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:22:13 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	unsigned char	*s10;
+	unsigned char	*s20;
 
-	i = 0;
-	while ((s1[i] == s2[i]) && i < (int)n)
-		i++;
-	return (s1[i] - s2[i]);
+	s10 = (unsigned char *)s1;
+	s20 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while ((*s10 && *s20) && (*s10 == *s20) && n > 1)
+	{
+		s10++;
+		s20++;
+		n--;
+	}
+	return ((int)(*s10 - *s20));
 }
 
 /* #include <stdio.h>
@@ -30,8 +38,8 @@ int	main(void)
 	
 	int resul;
 	
-	resul = ft_strncmp("aaabbb ", "aaaccc", 4);
+	resul = ft_strncmp("testss", "test", 5);
 	printf("%d\n", resul);
 	
 	return (0);
-} */
+}  */

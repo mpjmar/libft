@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 19:19:47 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/05/11 12:23:29 by maria-j2         ###   ########.fr       */
+/*   Created: 2025/05/09 18:45:38 by maria-j2          #+#    #+#             */
+/*   Updated: 2025/05/11 18:46:01 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	void	*s;
+	char			*resul;
+	unsigned int	i;
 
-	s = malloc(nmemb * size);
-	if (s == NULL)
+	i = 0;
+	resul = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!resul || !s || !f)
 		return (NULL);
-	ft_bzero(s, nmemb * size);
-	return (s);
+	while (s[i])
+	{
+		resul[i] = (*f)(i, s[i]);
+		i++;
+	}
+	resul[i] = '\0';
+	return (resul);
 }
-
-/* #include <stdio.h>
-
-int	main(void)
-{
-	printf("PRUEBA ft_calloc\n")
-
-	char *resul = (char *)ft_calloc(5, 1);
-	printf("%s\n", resul);
-	
-	return (0);
-} */
