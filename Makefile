@@ -6,7 +6,7 @@
 #    By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/26 13:12:25 by maria-j2          #+#    #+#              #
-#    Updated: 2025/05/12 19:39:16 by maria-j2         ###   ########.fr        #
+#    Updated: 2025/05/12 20:13:42 by maria-j2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c #ft_lstlast.c \
 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 OBJS = $(SRC:.c=.o)
-BONUS_OBJS = $(SRC:.c = .o)
+BONUS_OBJS = $(BONUS:.c=.o)
 
 # Header file
 INCLUDE = libft.h
