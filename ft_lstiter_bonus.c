@@ -6,7 +6,7 @@
 /*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 19:38:16 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/05/13 20:20:44 by maria-j2         ###   ########.fr       */
+/*   Updated: 2025/05/14 18:04:56 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (!lst || !f)
-		return (NULL);
+		return ;
 	while (lst)
 	{
 		f(lst->content);
