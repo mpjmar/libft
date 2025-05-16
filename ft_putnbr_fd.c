@@ -6,7 +6,7 @@
 /*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 18:52:55 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/05/12 18:31:45 by maria-j2         ###   ########.fr       */
+/*   Updated: 2025/05/15 19:10:07 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	i = 0;
 	s = ft_itoa(n);
+	if (!s)
+		return ;
 	while (s[i])
 	{
 		ft_putchar_fd(s[i], fd);
