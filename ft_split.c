@@ -6,7 +6,7 @@
 /*   By: maria-j2 <maria-j2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 19:00:37 by maria-j2          #+#    #+#             */
-/*   Updated: 2025/05/12 16:51:37 by maria-j2         ###   ########.fr       */
+/*   Updated: 2025/05/16 19:16:43 by maria-j2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	count_words(char const *s, char c)
 
 	words = 0;
 	i = 0;
+	if (!s || !c)
+		return (0);
 	while (*s)
 	{
 		if (*s != c && i == 0)
@@ -48,31 +50,44 @@ static char	*build_string(char const *s, int start, int end)
 	return (sub);
 }
 
+static void	free_split(char **s, int i)
+{
+	while (--i >= 0)
+		free(s[i]);
+	free(s);
+}
+
+
 char	**ft_split(char const *s, char c)
 {
 	char	**resul;
 	int		start;
+	int		end;
 	int		i;
-	int		j;
 
+	end = 0;
 	i = 0;
-	j = 0;
 	start = -1;
 	resul = malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (!resul || !s)
 		return (NULL);
-	while (i <= (int)ft_strlen(s))
+	while (end <= (int)ft_strlen(s))
 	{
-		if (s[i] != c && start < 0)
-			start = i;
-		else if ((s[i] == c || i == (int)ft_strlen(s)) && start >= 0)
+		if (s[end] != c && start < 0)
+			start = end;
+		else if ((s[end] == c || end == (int)ft_strlen(s)) && start >= 0)
 		{
-			resul[j++] = build_string(s, start, i);
+			resul[i++] = build_string(s, start, end);
+			if (!resul[i])
+			{
+				free_split(resul, i);
+				return (NULL);
+			}
 			start = -1;
 		}
-		i++;
+		end++;
 	}
-	resul[j] = 0;
+	resul[i] = 0;
 	return (resul);
 }
 
@@ -84,7 +99,7 @@ int	main(void)
 	char	**resul;
 	
 	printf("PRUEBA ft_split\n");
-	resul = ft_split("este es el string que quiero separar", ' ');
+	resul = ft_split("hello", ' ');
 	
 	while (resul[i])
 	{
@@ -94,4 +109,4 @@ int	main(void)
 	}
 	free(resul);
 	return (0);
-} */
+}  */
